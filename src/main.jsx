@@ -9,6 +9,11 @@ function formatValue(value) {
 }
 
 function Result({random}) {
+
+  if (random === null) {
+    return <h2 style={{background: 'gray'}}>You need to roll to know your luck!</h2>
+  }
+
   const [text, color] = random < 0.49 ? ['You win!', 'green'] : ['You lose...', 'red'];
 
   return (
@@ -20,7 +25,7 @@ function Result({random}) {
 }
 
 function Gambling() {
-  const [random, setRandom] = useState(Math.random());
+  const [random, setRandom] = useState(null);
   return (
     <>
       <Result random={random}/>
